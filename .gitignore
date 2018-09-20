@@ -34,3 +34,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+/Assets/.wav.wav
+/Assets/SampleScenes
+/Assets/waves.wav
+/Assets/waves.wav.meta
