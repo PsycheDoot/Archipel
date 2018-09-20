@@ -35,9 +35,9 @@ public class Projectile : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		rigidBody.Sleep();
 		if (currentState == State.alive) {
 			gameObject.transform.position = GetProjectilePosition(Timer);
+			rigidBody.Sleep();
 		} else {
 			//rigidBody.Sleep();
 		}
@@ -71,6 +71,10 @@ public class Projectile : MonoBehaviour {
 		TimerOn = false;
 	}
 
+	protected void Physics() {
+
+	}
+
 	protected Vector3 GetProjectileVelocityInit() {
 		Vector2 rad = Rotation * Mathf.Deg2Rad;
 		return new Vector3(
@@ -89,5 +93,7 @@ public class Projectile : MonoBehaviour {
 	private void OnCollisionEnter (Collision collision) {
 		Debug.Log("hit");
 		Die();
+		Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
+		if (rb != null) rb.AddForceAtPosition((GetProjectilePosition(Timer) - transform.position) * 10f, collision.transform.position, ForceMode.Impulse);
 	}
 }
