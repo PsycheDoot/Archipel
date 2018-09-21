@@ -91,9 +91,15 @@ public class Projectile : MonoBehaviour {
 	}
 
 	private void OnCollisionEnter (Collision collision) {
-		Debug.Log("hit");
-		Die();
-		Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
-		if (rb != null) rb.AddForceAtPosition((GetProjectilePosition(Timer) - transform.position) * 10f, collision.transform.position, ForceMode.Impulse);
+		if (currentState == State.alive) {
+			Debug.Log("hit");
+			Die();
+			Vector3 vel = GetProjectilePosition(Timer) - transform.position;
+			rigidBody.velocity = vel;
+			Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
+			if (rb != null) rb.AddForceAtPosition(vel * 10f, collision.transform.position, ForceMode.Impulse);
+			SoundOnHit soh = collision.gameObject.GetComponent<SoundOnHit>();
+			if (soh != null) soh.Play();
+		}
 	}
 }
