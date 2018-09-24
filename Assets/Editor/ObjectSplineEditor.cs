@@ -34,6 +34,20 @@ namespace Assets.Editors {
 			}
 			GUILayout.EndHorizontal();
 
+			GUILayout.BeginHorizontal();
+			if (GUILayout.Button("Reset GameObjects")) {
+				var GameObjects = serializedObject.FindProperty("GameObjects");
+				GameObjects.ClearArray();
+				MeshRenderer[] children = spline.GetComponentsInChildren<MeshRenderer>();
+				foreach(MeshRenderer go in children) {
+					GameObject.DestroyImmediate(go.gameObject);
+				}
+				spline.GameObjects.Clear();
+				UpdateGameObjects();
+				serializedObject.ApplyModifiedProperties();
+			}
+			GUILayout.EndHorizontal();
+
 			DrawDefaultInspector();
 			//EditorGUI.ObjectField(new Rect(0, 0, 100, 100), new UnityEditor.SerializedObject(spline).FindProperty("Target"));
 		}
