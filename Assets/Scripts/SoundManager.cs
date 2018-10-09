@@ -27,4 +27,27 @@ public class SoundManager : MonoBehaviour {
 		data.Add(sampleName);
 		OSCHandler.Instance.SendMessageToClient("ChuckAudioEngine", "Archipel/AudioEngine/AddSampleAudioSource", data);
 	}
+
+	public void SetPosAudioSource (string sourceName, float x, float y, float z) {
+		List<object> data = new List<object>();
+		data.Add(sourceName);
+		data.Add(x);
+		data.Add(y);
+		data.Add(z);
+		OSCHandler.Instance.SendMessageToClient("ChuckAudioEngine", "Archipel/AudioEngine/SetPosAudioSource", data);
+	}
+
+	public void SetPosAudioListener (float x, float y, float z) {
+		List<object> data = new List<object>();
+		data.Add(x);
+		data.Add(y);
+		data.Add(z);
+		OSCHandler.Instance.SendMessageToClient("ChuckAudioEngine", "Archipel/AudioEngine/SetPosAudioListener", data);
+	}
+
+	public void SetRotAudioListener (float x) {
+		List<object> data = new List<object>();
+		data.Add(x);
+		OSCHandler.Instance.SendMessageToClient("ChuckAudioEngine", "Archipel/AudioEngine/SetRotAudioListener", data);
+	}
 }

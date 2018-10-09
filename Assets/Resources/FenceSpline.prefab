@@ -53,7 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tiling: 2
   debug: 1
-  CopyObject: {fileID: 100000, guid: 86f105d9ae9ae1f4e9e6e171226cac7c, type: 3}
+  CopyObject: {fileID: 1175485536199142, guid: 0026cca915d0f8c46822686852310319, type: 2}
   GameObjects: []
   closed: 0
   points:

@@ -98,7 +98,7 @@ public class OSCHandler : MonoBehaviour
         //Example:		
         CreateClient("ChuckAudioEngine", IPAddress.Parse("127.0.0.1"), 1234);
 
-        //Initialize OSC servers (listeners)
+		//Initialize OSC servers (listeners)
     }
 
     #region Properties
