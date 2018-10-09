@@ -23,9 +23,9 @@ GameObject:
   - component: {fileID: 23356396589799286}
   - component: {fileID: 135614124439912104}
   - component: {fileID: 54237949294718976}
-  - component: {fileID: 114348453535581136}
+  - component: {fileID: 114420040071403858}
   m_Layer: 10
-  m_Name: Projectile
+  m_Name: HighVelocityRound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,8 +100,8 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &114348453535581136
+  m_CollisionDetection: 2
+--- !u!114 &114420040071403858
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,11 +109,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1704538999540064}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88d2ec32b14eb18458c75cdce56c8503, type: 3}
+  m_Script: {fileID: 11500000, guid: fb2d3dcc6fc65214a9ab2159178b32b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MagVelocity: 5
-  LiveTime: 10
+  MagVelocity: 50
+  LiveTime: 2
 --- !u!135 &135614124439912104
 SphereCollider:
   m_ObjectHideFlags: 1

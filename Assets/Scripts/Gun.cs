@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
+//[RequireComponent(typeof(AudioSource))]
 public abstract class Gun : MonoBehaviour {
+
+	public Vector3 forward { get; set; }
+	public GameObject projectile;
 
 	public int MaxClipSize = 0;
 	public int ProjectilePoolSize = 5;
@@ -19,6 +22,13 @@ public abstract class Gun : MonoBehaviour {
 	public abstract void Fire ();
 	public abstract void Reload ();
 
+	public void Initialize() {
+		if (projectile == null)
+			InitializeProjectilePool(Resources.Load<GameObject>("Projectiles/Projectile"));
+		else
+			InitializeProjectilePool(projectile);
+	}
+
 	protected void InitializeProjectilePool(GameObject prefab) {
 		// Create projectile gameobjects
 		for (int i = 0; i < ProjectilePoolSize; i++) {
@@ -29,12 +39,9 @@ public abstract class Gun : MonoBehaviour {
 		}
 	}
 
-	protected bool FireProjectile() {
+	protected virtual bool FireProjectile() {
 		Projectile pro = ProjectilePool.Dequeue();
-		pro.transform.position = transform.position;
-		pro.SetDirection(new Vector2(-transform.parent.eulerAngles.x + ProjectileRotOffset.x, 
-			-transform.parent.parent.eulerAngles.y + ProjectileRotOffset.y));
-		pro.Fire();
+		pro.Fire(transform.position, transform.forward);
 		ProjectilePool.Enqueue(pro);
 		return true;
 	}
