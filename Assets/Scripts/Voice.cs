@@ -16,12 +16,11 @@ public class Voice : Gun {
 	//}
 
 	void Start () {
+		Initialize();
 		source = gameObject.GetComponent<AudioSource>();
-		InitializeProjectilePool(Resources.Load<GameObject>("Projectiles/Projectile"));
 		LoadAudioClips();
 		Reload();
 	}
-
 
 	private void LoadAudioClips() {
 		audioClips = Resources.LoadAll<AudioClip>("Gun Sounds");
